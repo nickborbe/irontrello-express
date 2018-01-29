@@ -25,12 +25,12 @@ router.post('/api/signup', (req, res, next) => {
           if (err) {
             res.status(500).json({ message: 'Email check went to 💩.' });
             return;
-          }
+          };
 
           if (userFromDb) {
             res.status(400).json({ message: 'Email is taken, friend.' });
             return;
-          }
+          };
 
           const salt = bcrypt.genSaltSync(10);
           const scrambledPassword = bcrypt.hashSync(thePassword, salt);
